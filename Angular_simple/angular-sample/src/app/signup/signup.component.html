@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Sign Up</h1>
+                    <h6>Register Yourself!!</h6>
+                </div>
+    
+                    <form  #signupform="ngForm" (ngSubmit)="signup()">
+                    	<small id="small" class="text-danger">{{msg}}</small>
+                      <div class="form-group">
+                        <!-- <label for="firstname">FirstName</label> -->
+                        <input type="text" class="form-control" placeholder="FirstName" name="firstname"
+                          [(ngModel)]="customer.firstName" required pattern="[a-zA-Z]{2,10}" #firstname="ngModel"
+                          [class.is-invalid]="firstname.invalid && firstname.touched">
+                        <div *ngIf="firstname.touched && firstname.invalid" class="text-danger">
+                          <small *ngIf="firstname.errors.required">FirstName Required!</small>
+                          <small *ngIf="firstname.errors.pattern">FirstName is Invalid</small>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <!-- <label for="lastname">LastName </label> -->
+                        <input type="text" class="form-control" placeholder="LastName" name="lastname"
+                          [(ngModel)]="customer.lastName" required pattern="[a-zA-Z]{2,10}" #lastname="ngModel"
+                          [class.is-invalid]="lastname.invalid && lastname.touched">
+                        <div *ngIf="lastname.touched && lastname.invalid" class="text-danger">
+                          <small *ngIf="lastname.errors.required">LastName Required!</small>
+                          <small *ngIf="lastname.errors.pattern">LastName is Invalid</small>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <!-- <label for="lastname">LastName </label> -->
+                        <input type="text" class="form-control" placeholder="UserName" name="username"
+                          [(ngModel)]="customer.userName" required pattern="[a-zA-Z]{2,10}" #username="ngModel"
+                          [class.is-invalid]="username.invalid && username.touched">
+                        <div *ngIf="username.touched && username.invalid" class="text-danger">
+                          <small *ngIf="username.errors.required">UserName Required!</small>
+                          <small *ngIf="username.errors.pattern">UserName is Invalid</small>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="contact no" name="phone" [(ngModel)]="customer.contact"
+                          required pattern="[1-9]{1}[0-9]{9}" #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched">
+                          <div *ngIf="phone.touched && phone.invalid" class="text-danger">
+                            <small *ngIf="phone.errors.required">Contact Number Required!</small>
+                            <small *ngIf="phone.errors.pattern">Contact Number should be of length 10</small>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <!-- <label for="email">Email </label> -->
+                        <input type="email" class="form-control" placeholder="Email Address" name="email"
+                          [(ngModel)]="customer.emailId" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}"
+                          #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                        <div *ngIf="email.touched && email.invalid" class="text-danger">
+                          <small *ngIf="email.errors.required">Email address Required!</small>
+                          <small *ngIf="email.errors.pattern">Email Address is Invalid</small>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <!-- <label for="password">Password </label> -->
+                        <input type="password" class="form-control" placeholder="Password" name="password"
+                          [(ngModel)]="customer.password" required #password="ngModel"
+                          [class.is-invalid]="password.invalid && password.touched">
+                        <small class="text-danger" *ngIf="password.invalid && password.touched">Password Required!</small>
+                      </div>
+        
+                        <button type="submit" id="sub" class="btn btn-primary">Sign Up</button>
+
+                      </form>
+                      <a style="color: #fff; margin-top: 10px" routerLink="/login">Already registered? Click to Login!!</a>
+                
+                    </div>
+        </div>
+
+    </div>
+</div>
